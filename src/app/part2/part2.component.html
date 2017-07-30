@@ -1,0 +1,7 @@
+<p>
+  part2 works!
+</p>
+ <p>Input: <input type="text" [(ngModel)]="greeting" size="25"></p>  
+    <p>Delimiter: <input type="text" [(ngModel)]="delimiter" size="25"></p>
+   <p>{{greeting | tokenizer}} (Default)</p>
+   <p>{{greeting | tokenizer: delimiter}} (With option)</p>

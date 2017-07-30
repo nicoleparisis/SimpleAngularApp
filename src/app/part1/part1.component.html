@@ -1,0 +1,44 @@
+<div style="text-align:center">
+  <h1>
+    My Books
+  </h1>
+</div>
+
+<table>
+      <thead>
+        <tr>
+            <th>Title</th>
+            <th>Qty</th>
+            <th>UnitPrice</th>
+            <th>$UnitPrice</th>
+            <th>Line Total</th>
+            <th>Total {{total|currency}}</th>
+        </tr>
+      </thead>
+      <tbody >
+        <tr *ngFor="let book of books; let i = index">
+            <td><input type="text" [(ngModel)]="book.title" size="20"></td>
+            <td>
+                <input type="text" (keyup)="updateTotal()" [(ngModel)]="book.qty" size="2">
+            </td>
+            <td><input type="text" (keyup)="updateTotal()" [(ngModel)]="book.price" size="5"></td>
+            <td>{{book.price | currency}}</td>
+            <td>{{book.price * book.qty | currency}}</td>
+            <td>
+                <button (click)="removeBook(i); updateTotal()">
+                    Remove
+                </button>
+            </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+            <td><button (click)="addBook(); updateTotal()" type="button">New</button></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><button (click)="saveBooks()" type="button">Save</button></td>
+            <td></td>
+        </tr>
+      </tfoot>
+    </table>
